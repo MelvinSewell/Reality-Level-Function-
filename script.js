@@ -1,4 +1,4 @@
-console.log("Reality Level Analyzer v2.1 active");
+console.log("Reality Level Analyzer v2.2 active");
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("analyzerForm");
@@ -91,10 +91,49 @@ document.addEventListener("DOMContentLoaded", () => {
         resistance: 3, power: 2, dimension: 2, entity: 4,
         temporal: 3, aesthetic: 9
       }
+    },
+    {
+      id: "marvel",
+      name: "Marvel Universe (Earth-616)",
+      rl: "4",
+      noi: 0,
+      fqi: 0,
+      rai: 1,
+      traits: {
+        causal: 7, narrative: 7, multiversal: 8, logic: 6,
+        resistance: 6, power: 9, dimension: 8, entity: 8,
+        temporal: 6, aesthetic: 7
+      }
+    },
+    {
+      id: "dc",
+      name: "DC Multiverse (Prime Earth)",
+      rl: "4",
+      noi: 0,
+      fqi: 0,
+      rai: 1,
+      traits: {
+        causal: 8, narrative: 7, multiversal: 9, logic: 6,
+        resistance: 6, power: 10, dimension: 9, entity: 9,
+        temporal: 7, aesthetic: 7
+      }
+    },
+    {
+      id: "hoyoverse",
+      name: "Hoyoverse (Teyvat / Honkai)",
+      rl: "3",
+      noi: 0,
+      fqi: 0,
+      rai: 0,
+      traits: {
+        causal: 5, narrative: 6, multiversal: 7, logic: 4,
+        resistance: 5, power: 7, dimension: 6, entity: 7,
+        temporal: 5, aesthetic: 9
+      }
     }
   ];
 
-  // Populate preset dropdown
+  // Populate dropdown
   presets.forEach(p => {
     const opt = document.createElement("option");
     opt.value = p.id;
@@ -102,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
     presetSelect.appendChild(opt);
   });
 
-  // Apply preset logic
+  // Apply selected traits + metadata
   presetSelect.addEventListener("change", () => {
     const selected = presets.find(p => p.id === presetSelect.value);
     if (selected) {
@@ -110,21 +149,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const el = document.getElementById(id);
         if (el) el.value = val;
       });
-
       form.dataset.rl = selected.rl;
       form.dataset.noi = selected.noi;
       form.dataset.fqi = selected.fqi;
       form.dataset.rai = selected.rai;
     } else {
-      // Clear dataset and reset sliders
-      form.dataset.rl = "";
-      form.dataset.noi = "";
-      form.dataset.fqi = "";
-      form.dataset.rai = "";
+      // Reset sliders and clear dataset
       traitIds.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.value = 5;
       });
+      form.dataset.rl = "";
+      form.dataset.noi = "";
+      form.dataset.fqi = "";
+      form.dataset.rai = "";
     }
   });
 
@@ -145,8 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const weight = weights[id] || 1;
         score += val * weight;
       });
-      const rounded = Math.round(score);
-      rl = estimateLevel(rounded);
+      rl = estimateLevel(Math.round(score));
     }
 
     levelLabel.textContent = rl;
