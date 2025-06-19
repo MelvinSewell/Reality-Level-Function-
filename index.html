@@ -5,47 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Reality Level Analyzer</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <header>
+  <main class="container">
     <h1>Reality Level Analyzer</h1>
-    <p>Select a known universe or define your own to reveal its place in the multiverse.</p>
-  </header>
-
-  <main>
-    <section>
-      <label for="presetSelect"><strong>Choose Reference Universe:</strong></label>
-      <select id="presetSelect">
-        <option value="">— Custom —</option>
-      </select>
-    </section>
 
     <form id="analyzerForm">
+      <label for="presetSelect">Select a Universe Preset:</label>
+      <select id="presetSelect">
+        <option value="">— Choose One —</option>
+      </select>
+
       <div class="trait-grid">
-        <div class="trait"><label for="causal">Causal Stability</label><input type="range" min="0" max="10" value="5" id="causal" /></div>
-        <div class="trait"><label for="narrative">Narrative Coherence</label><input type="range" min="0" max="10" value="5" id="narrative" /></div>
-        <div class="trait"><label for="multiversal">Multiversal Awareness</label><input type="range" min="0" max="10" value="5" id="multiversal" /></div>
-        <div class="trait"><label for="logic">Interface Compatibility</label><input type="range" min="0" max="10" value="5" id="logic" /></div>
-        <div class="trait"><label for="resistance">Narrative Resistance</label><input type="range" min="0" max="10" value="5" id="resistance" /></div>
-        <div class="trait"><label for="power">Power System Formalization</label><input type="range" min="0" max="10" value="5" id="power" /></div>
-        <div class="trait"><label for="dimension">Dimensional Layering</label><input type="range" min="0" max="10" value="5" id="dimension" /></div>
-        <div class="trait"><label for="entity">Entity Complexity</label><input type="range" min="0" max="10" value="5" id="entity" /></div>
-        <div class="trait"><label for="temporal">Temporal Fluidity</label><input type="range" min="0" max="10" value="5" id="temporal" /></div>
-        <div class="trait"><label for="aesthetic">Aesthetic Consistency</label><input type="range" min="0" max="10" value="5" id="aesthetic" /></div>
+        <!-- Each slider will be styled via CSS -->
+        <label>Causal Stability<input type="range" id="causal" min="0" max="10" value="5"/></label>
+        <label>Narrative Coherence<input type="range" id="narrative" min="0" max="10" value="5"/></label>
+        <label>Multiversal Awareness<input type="range" id="multiversal" min="0" max="10" value="5"/></label>
+        <label>Logic Complexity<input type="range" id="logic" min="0" max="10" value="5"/></label>
+        <label>Narrative Resistance<input type="range" id="resistance" min="0" max="10" value="5"/></label>
+        <label>Power Formalization<input type="range" id="power" min="0" max="10" value="5"/></label>
+        <label>Dimensional Layering<input type="range" id="dimension" min="0" max="10" value="5"/></label>
+        <label>Entity Complexity<input type="range" id="entity" min="0" max="10" value="5"/></label>
+        <label>Temporal Fluidity<input type="range" id="temporal" min="0" max="10" value="5"/></label>
+        <label>Aesthetic Consistency<input type="range" id="aesthetic" min="0" max="10" value="5"/></label>
       </div>
-      <button type="submit">Analyze</button>
+
+      <button type="submit">Analyze Reality</button>
     </form>
 
     <section id="results" hidden>
-      <h2>Reality Level: <span id="realityLabel">—</span></h2>
-      <p id="realitySummary">Your result will appear here.</p>
-      <p id="indexOutput"></p>
+      <div class="result-card">
+        <div class="tier-ring">
+          <div class="tier-glow"></div>
+          <div id="realityLabel" class="tier-label">—</div>
+        </div>
+        <p id="realitySummary"></p>
+        <div id="indexOutput" class="index-metrics"></div>
+        <canvas id="realityGlyph" width="320" height="320"></canvas>
+      </div>
     </section>
   </main>
-
-  <footer>
-    <p>Powered by the Sovereign Logic Framework</p>
-  </footer>
 
   <script src="script.js"></script>
 </body>
