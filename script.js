@@ -1,4 +1,4 @@
-console.log("Reality Level Analyzer v2.3 visual upgrade initialized");
+console.log("Reality Level Analyzer v2.4 initialized");
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("analyzerForm");
@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const summaryText = document.getElementById("realitySummary");
   const indexOutput = document.getElementById("indexOutput");
   const glyphCanvas = document.getElementById("realityGlyph");
+  const body = document.querySelector("body");
   let radarChart = null;
 
   const traitIds = [
@@ -69,6 +70,24 @@ document.addEventListener("DOMContentLoaded", () => {
       name: "Hoyoverse (Teyvat / Honkai)",
       rl: "3", noi: 0, fqi: 0, rai: 0,
       traits: { causal: 5, narrative: 6, multiversal: 7, logic: 4, resistance: 5, power: 7, dimension: 6, entity: 7, temporal: 5, aesthetic: 9 }
+    },
+    {
+      id: "christianity",
+      name: "Christianity Universe",
+      rl: "5", noi: 1, fqi: 1, rai: 1,
+      traits: { causal: 10, narrative: 9, multiversal: 5, logic: 9, resistance: 7, power: 10, dimension: 6, entity: 8, temporal: 9, aesthetic: 8 }
+    },
+    {
+      id: "shinto",
+      name: "Shinto Universe",
+      rl: "4", noi: 0, fqi: 0, rai: 0,
+      traits: { causal: 6, narrative: 7, multiversal: 7, logic: 6, resistance: 8, power: 6, dimension: 7, entity: 9, temporal: 5, aesthetic: 9 }
+    },
+    {
+      id: "buddhism",
+      name: "Buddhist Universe",
+      rl: "5", noi: 0, fqi: 1, rai: 0,
+      traits: { causal: 10, narrative: 8, multiversal: 9, logic: 10, resistance: 9, power: 6, dimension: 9, entity: 8, temporal: 10, aesthetic: 7 }
     }
   ];
 
@@ -133,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderGlyph(traitValues);
     animateRing(rl);
+    setVisualBackground(rl);
     output.hidden = false;
   });
 
@@ -148,7 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function describeLevel(level) {
     switch (level) {
       case "Ω": return "Supreme structuring authority. Origin of simulated law.";
-      case "5": return "Narrative governing system with universal coherence.";
+      case "5":
+      return "Narrative governing system with universal coherence.";
       case "4": return "Multiversal platform with structured logical depth.";
       case "3": return "Fictional realm with consistent internal rules.";
       case "2": return "Stylized or unstable reality construct.";
@@ -213,9 +234,12 @@ document.addEventListener("DOMContentLoaded", () => {
       "5": "#ffffff",
       "Ω": "#d0a2ff"
     };
-
     const color = colorMap[rl] || "#00faff";
     ring.style.boxShadow = `0 0 20px ${color}88, 0 0 40px ${color}33 inset`;
   }
-});
 
+  function setVisualBackground(rl) {
+    if (!body) return;
+    body.setAttribute("data-rl", rl);
+  }
+});
