@@ -1,52 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reality Level Analyzer</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body class="rl-visual-bg">
-  <main class="container">
-    <h1>💠 Reality Level Analyzer</h1>
+/* Cosmic Fonts and Reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  color: #f0f0f0;
+  transition: background 1s ease;
+}
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 2.25rem;
+  text-align: center;
+  color: #00faff;
+  margin: 1.5rem 0;
+}
+.container {
+  max-width: 980px;
+  padding: 2rem;
+  margin: auto;
+}
 
-    <form id="analyzerForm">
-      <label for="presetSelect">Select a Universe Preset:</label>
-      <select id="presetSelect">
-        <option value="">— Choose One —</option>
-      </select>
+/* Trait Slider Grid */
+.trait-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.95rem;
+  color: #c0c0c0;
+}
+input[type="range"] {
+  appearance: none;
+  height: 4px;
+  background: #444;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+}
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #00faff;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 3px #00faff;
+}
 
-      <div class="trait-grid">
-        <label>Causal Stability<input type="range" id="causal" min="0" max="10" value="5"/></label>
-        <label>Narrative Coherence<input type="range" id="narrative" min="0" max="10" value="5"/></label>
-        <label>Multiversal Awareness<input type="range" id="multiversal" min="0" max="10" value="5"/></label>
-        <label>Logic Complexity<input type="range" id="logic" min="0" max="10" value="5"/></label>
-        <label>Narrative Resistance<input type="range" id="resistance" min="0" max="10" value="5"/></label>
-        <label>Power Formalization<input type="range" id="power" min="0" max="10" value="5"/></label>
-        <label>Dimensional Layering<input type="range" id="dimension" min="0" max="10" value="5"/></label>
-        <label>Entity Complexity<input type="range" id="entity" min="0" max="10" value="5"/></label>
-        <label>Temporal Fluidity<input type="range" id="temporal" min="0" max="10" value="5"/></label>
-        <label>Aesthetic Consistency<input type="range" id="aesthetic" min="0" max="10" value="5"/></label>
-      </div>
+/* Button Design */
+button {
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(to right, #00c3ff, #0082ff);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 10px #00faff50;
+  transition: transform 0.2s ease;
+}
+button:hover {
+  transform: scale(1.03);
+}
 
-      <button type="submit">Analyze Reality</button>
-    </form>
+/* Result Card and Glyph */
+#results {
+  margin-top: 3rem;
+}
+.result-card {
+  background: #1a1a1d;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #00e0ff44;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+.index-metrics {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  color: #ffffffbb;
+  text-align: center;
+  line-height: 1.6;
+}
+#realityGlyph {
+  max-width: 320px;
+  background: rgba(255,255,255,0.015);
+  border-radius: 8px;
+  box-shadow: 0 0 15px #00faff22;
+}
 
-    <section id="results" hidden>
-      <div class="result-card">
-        <div class="tier-ring">
-          <div class="tier-glow"></div>
-          <div id="realityLabel" class="tier-label">—</div>
-        </div>
-        <p id="realitySummary"></p>
-        <div id="indexOutput" class="index-metrics"></div>
-        <canvas id="realityGlyph" width="320" height="320"></canvas>
-      </div>
-    </section>
-  </main>
+/* Tier Ring Animation */
+.tier-ring {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+.tier-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  z-index: 2;
+}
+.tier-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: pulseTier 4s infinite;
+  box-shadow: 0 0 20px #00faff88, 0 0 40px #00faff33 inset;
+  z-index: 1;
+}
+@keyframes pulseTier {
+  0% { box-shadow: 0 0 20px #00faff55, 0 0 40px #00faff22 inset; }
+  50% { box-shadow: 0 0 28px #00faffcc, 0 0 60px #00faff66 inset; }
+  100% { box-shadow: 0 0 20px #00faff55, 0 0 40px #00faff22 inset; }
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+/* RL-Themed Backgrounds */
+body[data-rl="1"] { background: radial-gradient(#4e0036, #0c0010); }
+body[data-rl="2"] { background: radial-gradient(#663b00, #0d0a05); }
+body[data-rl="3"] { background: radial-gradient(#00331d, #0a0f0c); }
+body[data-rl="4"] { background: radial-gradient(#00294c, #060d17); }
+body[data-rl="5"] { background: radial-gradient(#1b003e, #0a0015); }
+body[data-rl="Ω"] { background: radial-gradient(#26004d, #000005); }
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+  .trait-grid { grid-template-columns: 1fr; }
+}
+
