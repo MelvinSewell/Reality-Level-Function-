@@ -1,0 +1,38 @@
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(#111, #000);
+  color: #d1f4f9;
+  padding: 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #00f6ff;
+}
+
+.trait-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+input[type=range] {
+  width: 100%;
+}
+
+button {
+  padding: 0.5em 1em;
+  background: #00f6ff;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#results {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #222;
+  border: 1px solid #00f6ff;
+}
