@@ -1,13 +1,11 @@
-/* Fonts & Basics */
+/* Cosmic Fonts and Reset */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
-  background: #0d0d0e;
   color: #f0f0f0;
-  line-height: 1.5;
+  transition: background 1s ease;
 }
-
 h1 {
   font-family: 'Orbitron', sans-serif;
   font-weight: 700;
@@ -16,39 +14,34 @@ h1 {
   color: #00faff;
   margin: 1.5rem 0;
 }
-
 .container {
   max-width: 980px;
   padding: 2rem;
   margin: auto;
 }
 
-/* Form Grid */
+/* Trait Slider Grid */
 .trait-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
   margin: 1rem 0 2rem;
 }
-
 label {
   display: flex;
   flex-direction: column;
   font-size: 0.95rem;
   color: #c0c0c0;
 }
-
 input[type="range"] {
   appearance: none;
   height: 4px;
   background: #444;
   border-radius: 5px;
-  outline: none;
   margin-top: 0.5rem;
-  transition: background 0.3s ease;
 }
-input[type="range"]::-webkit-slider-thumb {
-  appearance: none;
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
   width: 16px;
   height: 16px;
   background: #00faff;
@@ -56,16 +49,8 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   box-shadow: 0 0 3px #00faff;
 }
-input[type="range"]::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  background: #00faff;
-  border-radius: 50%;
-  cursor: pointer;
-  border: none;
-}
 
-/* Button */
+/* Button Design */
 button {
   font-family: 'Orbitron', sans-serif;
   background: linear-gradient(to right, #00c3ff, #0082ff);
@@ -83,11 +68,10 @@ button:hover {
   transform: scale(1.03);
 }
 
-/* Result Card */
+/* Result Card and Glyph */
 #results {
   margin-top: 3rem;
 }
-
 .result-card {
   background: #1a1a1d;
   padding: 2rem;
@@ -98,13 +82,25 @@ button:hover {
   align-items: center;
   gap: 1.5rem;
 }
+.index-metrics {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  color: #ffffffbb;
+  text-align: center;
+  line-height: 1.6;
+}
+#realityGlyph {
+  max-width: 320px;
+  background: rgba(255,255,255,0.015);
+  border-radius: 8px;
+  box-shadow: 0 0 15px #00faff22;
+}
 
-/* Reality Level Ring */
+/* Tier Ring Animation */
 .tier-ring {
   position: relative;
   width: 140px;
   height: 140px;
-  margin-bottom: 0.5rem;
 }
 .tier-label {
   position: absolute;
@@ -126,34 +122,21 @@ button:hover {
   box-shadow: 0 0 20px #00faff88, 0 0 40px #00faff33 inset;
   z-index: 1;
 }
-
 @keyframes pulseTier {
   0% { box-shadow: 0 0 20px #00faff55, 0 0 40px #00faff22 inset; }
   50% { box-shadow: 0 0 28px #00faffcc, 0 0 60px #00faff66 inset; }
   100% { box-shadow: 0 0 20px #00faff55, 0 0 40px #00faff22 inset; }
 }
 
-/* Index Output */
-.index-metrics {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.9rem;
-  color: #ffffffbb;
-  text-align: center;
-  line-height: 1.6;
-}
-
-/* Radar Glyph Chart */
-#realityGlyph {
-  max-width: 320px;
-  max-height: 320px;
-  background: rgba(255,255,255,0.015);
-  border-radius: 8px;
-  box-shadow: 0 0 15px #00faff22;
-}
+/* RL-Themed Backgrounds */
+body[data-rl="1"] { background: radial-gradient(#4e0036, #0c0010); }
+body[data-rl="2"] { background: radial-gradient(#663b00, #0d0a05); }
+body[data-rl="3"] { background: radial-gradient(#00331d, #0a0f0c); }
+body[data-rl="4"] { background: radial-gradient(#00294c, #060d17); }
+body[data-rl="5"] { background: radial-gradient(#1b003e, #0a0015); }
+body[data-rl="Ω"] { background: radial-gradient(#26004d, #000005); }
 
 /* Responsive */
 @media screen and (max-width: 600px) {
-  .trait-grid {
-    grid-template-columns: 1fr;
-  }
+  .trait-grid { grid-template-columns: 1fr; }
 }
