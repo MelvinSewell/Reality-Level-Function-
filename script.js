@@ -1,4 +1,4 @@
-console.log("Reality Level Analyzer v2.4 initialized");
+console.log("Reality Level Analyzer v2.5 initialized");
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("analyzerForm");
@@ -22,74 +22,83 @@ document.addEventListener("DOMContentLoaded", () => {
     temporal: 0.8, aesthetic: 0.5
   };
 
-  const presets = [
-    {
-      id: "trueflow",
-      name: "TrueFlow Universe",
-      rl: "Ω", noi: 0, fqi: 1, rai: 1,
-      traits: { causal: 10, narrative: 10, multiversal: 10, logic: 10, resistance: 7, power: 10, dimension: 10, entity: 10, temporal: 9, aesthetic: 10 }
-    },
-    {
-      id: "earth",
-      name: "Baseline Earth (Modern)",
-      rl: "5", noi: 1, fqi: 0, rai: 0,
-      traits: { causal: 10, narrative: 6, multiversal: 2, logic: 6, resistance: 6, power: 1, dimension: 3, entity: 7, temporal: 2, aesthetic: 6 }
-    },
-    {
-      id: "dragonball",
-      name: "Dragon Ball Multiverse",
-      rl: "3", noi: 0, fqi: 0, rai: 1,
-      traits: { causal: 5, narrative: 5, multiversal: 8, logic: 4, resistance: 6, power: 10, dimension: 7, entity: 8, temporal: 6, aesthetic: 6 }
-    },
-    {
-      id: "looneyverse",
-      name: "Looneyverse",
-      rl: "1", noi: 0, fqi: 0, rai: 0,
-      traits: { causal: 1, narrative: 3, multiversal: 7, logic: 2, resistance: 8, power: 5, dimension: 4, entity: 4, temporal: 7, aesthetic: 9 }
-    },
-    {
-      id: "gtav",
-      name: "San Andreas Metaverse (GTA V)",
-      rl: "3", noi: 0, fqi: 0, rai: 0,
-      traits: { causal: 7, narrative: 6, multiversal: 2, logic: 5, resistance: 3, power: 2, dimension: 2, entity: 4, temporal: 3, aesthetic: 9 }
-    },
-    {
-      id: "marvel",
-      name: "Marvel Universe (Earth-616)",
-      rl: "4", noi: 0, fqi: 0, rai: 1,
-      traits: { causal: 7, narrative: 7, multiversal: 8, logic: 6, resistance: 6, power: 9, dimension: 8, entity: 8, temporal: 6, aesthetic: 7 }
-    },
-    {
-      id: "dc",
-      name: "DC Multiverse (Prime Earth)",
-      rl: "4", noi: 0, fqi: 0, rai: 1,
-      traits: { causal: 8, narrative: 7, multiversal: 9, logic: 6, resistance: 6, power: 10, dimension: 9, entity: 9, temporal: 7, aesthetic: 7 }
-    },
-    {
-      id: "hoyoverse",
-      name: "Hoyoverse (Teyvat / Honkai)",
-      rl: "3", noi: 0, fqi: 0, rai: 0,
-      traits: { causal: 5, narrative: 6, multiversal: 7, logic: 4, resistance: 5, power: 7, dimension: 6, entity: 7, temporal: 5, aesthetic: 9 }
-    },
-    {
-      id: "christianity",
-      name: "Christianity Universe",
-      rl: "5", noi: 1, fqi: 1, rai: 1,
-      traits: { causal: 10, narrative: 9, multiversal: 5, logic: 9, resistance: 7, power: 10, dimension: 6, entity: 8, temporal: 9, aesthetic: 8 }
-    },
-    {
-      id: "shinto",
-      name: "Shinto Universe",
-      rl: "4", noi: 0, fqi: 0, rai: 0,
-      traits: { causal: 6, narrative: 7, multiversal: 7, logic: 6, resistance: 8, power: 6, dimension: 7, entity: 9, temporal: 5, aesthetic: 9 }
-    },
-    {
-      id: "buddhism",
-      name: "Buddhist Universe",
-      rl: "5", noi: 0, fqi: 1, rai: 0,
-      traits: { causal: 10, narrative: 8, multiversal: 9, logic: 10, resistance: 9, power: 6, dimension: 9, entity: 8, temporal: 10, aesthetic: 7 }
-    }
-  ];
+  const presets = [{
+    id: "trueflow",
+    name: "TrueFlow Universe",
+    rl: "Ω", noi: 0, fqi: 1, rai: 1,
+    metaphysicalEngine: "Generator-Mirror",
+    traits: { causal: 10, narrative: 10, multiversal: 10, logic: 10, resistance: 7, power: 10, dimension: 10, entity: 10, temporal: 9, aesthetic: 10 }
+  },
+  {
+    id: "earth",
+    name: "Baseline Earth (Modern)",
+    rl: "5", noi: 1, fqi: 0, rai: 0,
+    metaphysicalEngine: "Agent",
+    traits: { causal: 10, narrative: 6, multiversal: 2, logic: 6, resistance: 6, power: 1, dimension: 3, entity: 7, temporal: 2, aesthetic: 6 }
+  },
+  {
+    id: "dragonball",
+    name: "Dragon Ball Multiverse",
+    rl: "3", noi: 0, fqi: 0, rai: 1,
+    metaphysicalEngine: "Generator",
+    traits: { causal: 5, narrative: 5, multiversal: 8, logic: 4, resistance: 6, power: 10, dimension: 7, entity: 8, temporal: 6, aesthetic: 6 }
+  },
+  {
+    id: "looneyverse",
+    name: "Looneyverse",
+    rl: "1", noi: 0, fqi: 0, rai: 0,
+    metaphysicalEngine: "Chaotic",
+    traits: { causal: 1, narrative: 3, multiversal: 7, logic: 2, resistance: 8, power: 5, dimension: 4, entity: 4, temporal: 7, aesthetic: 9 }
+  },
+  {
+    id: "gtav",
+    name: "San Andreas Metaverse (GTA V)",
+    rl: "3", noi: 0, fqi: 0, rai: 0,
+    metaphysicalEngine: "Agent",
+    traits: { causal: 7, narrative: 6, multiversal: 2, logic: 5, resistance: 3, power: 2, dimension: 2, entity: 4, temporal: 3, aesthetic: 9 }
+  },
+  {
+    id: "marvel",
+    name: "Marvel Universe (Earth-616)",
+    rl: "4", noi: 0, fqi: 0, rai: 1,
+    metaphysicalEngine: "Generator",
+    traits: { causal: 7, narrative: 7, multiversal: 8, logic: 6, resistance: 6, power: 9, dimension: 8, entity: 8, temporal: 6, aesthetic: 7 }
+  },
+  {
+    id: "dc",
+    name: "DC Multiverse (Prime Earth)",
+    rl: "4", noi: 0, fqi: 0, rai: 1,
+    metaphysicalEngine: "Generator",
+    traits: { causal: 8, narrative: 7, multiversal: 9, logic: 6, resistance: 6, power: 10, dimension: 9, entity: 9, temporal: 7, aesthetic: 7 }
+  },
+  {
+    id: "hoyoverse",
+    name: "Hoyoverse (Teyvat / Honkai)",
+    rl: "3", noi: 0, fqi: 0, rai: 0,
+    metaphysicalEngine: "Agent",
+    traits: { causal: 5, narrative: 6, multiversal: 7, logic: 4, resistance: 5, power: 7, dimension: 6, entity: 7, temporal: 5, aesthetic: 9 }
+  },
+  {
+    id: "christianity",
+    name: "Christianity Universe",
+    rl: "5", noi: 1, fqi: 1, rai: 1,
+    metaphysicalEngine: "Generator",
+    traits: { causal: 10, narrative: 9, multiversal: 5, logic: 9, resistance: 7, power: 10, dimension: 6, entity: 8, temporal: 9, aesthetic: 8 }
+  },
+  {
+    id: "shinto",
+    name: "Shinto Universe",
+    rl: "4", noi: 0, fqi: 0, rai: 0,
+    metaphysicalEngine: "Agent",
+    traits: { causal: 6, narrative: 7, multiversal: 7, logic: 6, resistance: 8, power: 6, dimension: 7, entity: 9, temporal: 5, aesthetic: 9 }
+  },
+  {
+    id: "buddhism",
+    name: "Buddhist Universe",
+    rl: "5", noi: 0, fqi: 1, rai: 0,
+    metaphysicalEngine: "Liberator",
+    traits: { causal: 10, narrative: 8, multiversal: 9, logic: 10, resistance: 9, power: 6, dimension: 9, entity: 8, temporal: 10, aesthetic: 7 }
+  }];
 
   presets.forEach(p => {
     const opt = document.createElement("option");
@@ -109,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
       form.dataset.noi = selected.noi;
       form.dataset.fqi = selected.fqi;
       form.dataset.rai = selected.rai;
+      form.dataset.engine = selected.metaphysicalEngine || "—";
     } else {
       traitIds.forEach(id => {
         const el = document.getElementById(id);
@@ -118,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       delete form.dataset.noi;
       delete form.dataset.fqi;
       delete form.dataset.rai;
+      delete form.dataset.engine;
     }
   });
 
@@ -128,6 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const noi = parseInt(form.dataset.noi || "0");
     const fqi = parseInt(form.dataset.fqi || "0");
     const rai = parseInt(form.dataset.rai || "0");
+    const engine = form.dataset.engine || "—";
 
     let rl = presetRL;
     let score = 0;
@@ -147,7 +159,8 @@ document.addEventListener("DOMContentLoaded", () => {
     indexOutput.innerHTML = `
       <strong>Narrative Origin Index:</strong> ${noi ? "True" : "False"}<br>
       <strong>Foundational Qualifier Index:</strong> ${fqi ? "Qualified" : "Unqualified"}<br>
-      <strong>Reality Authority Index:</strong> ${rai ? "Active" : "Inactive"}
+      <strong>Reality Authority Index:</strong> ${rai ? "Active" : "Inactive"}<br>
+      <strong>Metaphysical Engine Type:</strong> ${engine}
     `;
 
     renderGlyph(traitValues);
@@ -168,8 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function describeLevel(level) {
     switch (level) {
       case "Ω": return "Supreme structuring authority. Origin of simulated law.";
-      case "5":
-      return "Narrative governing system with universal coherence.";
+      case "5": return "Narrative governing system with universal coherence.";
       case "4": return "Multiversal platform with structured logical depth.";
       case "3": return "Fictional realm with consistent internal rules.";
       case "2": return "Stylized or unstable reality construct.";
@@ -179,10 +191,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function renderGlyph(traits) {
-    const labels = [
-      "Causal", "Narrative", "Multiversal", "Logic", "Resistance",
-      "Power", "Dimension", "Entity", "Temporal", "Aesthetic"
-    ];
+    const labels = traitIds.map(id =>
+      id.charAt(0).toUpperCase() + id.slice(1)
+    );
     const values = traitIds.map(id => traits[id]);
 
     if (radarChart) radarChart.destroy();
